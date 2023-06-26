@@ -13,6 +13,9 @@ public class EmployeeDTO {
 
     private long departmentId;
 
+    private ContactDTO contactDTO;
+    private  long contactId;
+
     public DepartmentDTO getDto() {
         return dto;
     }
@@ -69,6 +72,17 @@ public class EmployeeDTO {
         this.designation = designation;
     }
 
+    public void setDto(ContactDTO contactDTO) {
+        this.contactDTO = contactDTO;
+    }
+
+    public long getContactId() {
+        return contactId;
+    }
+
+    public void setContactId(long contactId) {
+        this.contactId = contactId;
+    }
 
     @Override
     public String toString() {
@@ -80,4 +94,5 @@ public class EmployeeDTO {
                 ", designation='" + designation + '\'' +
                 '}';
     }
+
 }

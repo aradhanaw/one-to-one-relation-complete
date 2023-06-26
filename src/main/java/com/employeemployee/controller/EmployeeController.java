@@ -2,6 +2,7 @@ package com.employeemployee.controller;
 
 import com.employeemployee.dto.EmployeeDTO;
 import com.employeemployee.model.Employee;
+import com.employeemployee.service.ContactService;
 import com.employeemployee.service.DepartmentService;
 import com.employeemployee.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,8 @@ public class EmployeeController {
 
     @Autowired
     private DepartmentService departmentService;
+    @Autowired
+    private ContactService contactService;
 
     @GetMapping("/")
     
@@ -32,6 +35,7 @@ public class EmployeeController {
         EmployeeDTO employeeDTO=new EmployeeDTO();
         model.addAttribute("employee",employeeDTO);
         model.addAttribute("department",departmentService.getAll());
+        model.addAttribute("contact",contactService.getAll());
         return "addEmployee";
 }
    @PostMapping("/save")
@@ -42,7 +46,8 @@ public class EmployeeController {
    @GetMapping("update/{id}")
     public String updateForm(@PathVariable(value = "id")long id ,Model model){
         EmployeeDTO employeeDTO=employeeService.getById(id);
-      model.addAttribute("department",departmentService.getAll());
+     model.addAttribute("department",departmentService.getAll());
+     model.addAttribute("contact",contactService.getAll());
       model.addAttribute("employee",employeeDTO);
         return "update";
    }
@@ -50,5 +55,12 @@ public class EmployeeController {
     public String deleteById(@PathVariable(value = "id") long id ){
         employeeService.deleteById(id);
         return "redirect:/";
+   }
+
+   @PostMapping("updateempp/{id}")
+    public  String updateemp(@PathVariable long id , EmployeeDTO employeeDTO)
+   {
+       employeeService.updateemp(id, employeeDTO);
+       return  "redirect:/";
    }
 }

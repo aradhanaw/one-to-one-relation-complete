@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Employee</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script type="text/javascript"src="resources/statics/contact.js"></script>
+</head>
+<body>
+<!--<div class="container">-->
+    <h1>Employee Management System</h1>
+    <hr>
+    <h2>Save Contact </h2>
+    <form action="#" th:action="@{/save_con}" th:object="${contact}" method="POST">
+        <input type="text" th:field="*{phonenumber1}" placeholder="phonenumber1" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{phonenumber2}" placeholder="phonenumber2" class="form-control mb-4 col-4">
+        <button type="submit" class="btn btn-info col-2">Save</button>
+    </form>
+    <hr>
+
+
+
+<!--    <div th:each="we, contact: *{contact}">-->
+<!--        <div>-->
+<!--            <button th:if="${contact.index == 0}" class="btn btn-warning float-right mb-2 add-new-div"-->
+<!--                    type="button" th:onclick="'addContact(' + *{contact.size()-1} + ')'">Add</button>-->
+<!--            <div class="form-group ">-->
+<!--                <label>Phone Number1</label>-->
+<!--                <input type="text" th:field="*{contact[__${contact.index}__].phonenumber1}" class="form-control custom-form-control" id="phonenumber1" placeholder="Enter phonenumber">-->
+<!--            </div>-->
+<!--            <div class="d-flex justify-content-between mt-2">-->
+<!--                <div class="form-inline">-->
+<!--                    <label>Phone Number2</label>-->
+<!--                    <input type="text" class="form-control custom-form-control" th:field="*{contact[__${contact.index}__].phonenumber2}"  placeholder="Enter another phonenumb">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--        <div class="form-inline">&ndash;&gt;-->
+<!--                    <label class="col-form-label font-weight-normal mr-2">From</label>-->
+<!--                    <div class="input-group">-->
+<!--                        <div class="input-group-prepend">-->
+<!--                            <span class="input-group-text bg-transparent dateIcon" id="icon"><i class="fas fa-calendar"></i></span>-->
+<!--                        </div>-->
+<!--                        <input type="text" class="form-control custom-form-control mydatepicker bg-transparent" th:field="*{workExperienceDTO[__${itemStat.index}__].joinDate}" data-date-format="yyyy/mm/dd" readonly>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="form-inline">-->
+<!--                    <label class="col-form-label font-weight-normal ml-auto mr-2">To</label>-->
+<!--                    <div class="input-group">-->
+<!--                        <div class="input-group-prepend">-->
+<!--                            <span class="input-group-text bg-transparent dateIcon" id="icon"><i class="fas fa-calendar"></i></span>-->
+<!--                        </div>-->
+<!--                        <input type="text" class="form-control custom-form-control mydatepicker bg-transparent" th:field="*{workExperienceDTO[__${itemStat.index}__].leftDate}" data-date-format="yyyy/mm/dd" readonly>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+<!--                <label for="jobDesc" class="col-form-label font-weight-normal ">Job Description</label>-->
+<!--         <div>       <textarea class="form-control custom-form-control" th:field="*{workExperienceDTO[__${itemStat.index}__].jobDesc}" id="jobDesc"></textarea>-->
+<!--            </div>-->
+<!--        </div>-->
+
+
+
+
+
+    <a href="#{/}">Back  to Employee List</a>
+</div>
+</body>
+</html>

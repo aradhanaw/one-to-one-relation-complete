@@ -2,12 +2,13 @@ package com.employeemployee.model;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 public class Employee {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
     private String email;
@@ -16,6 +17,8 @@ public class Employee {
   @ManyToOne()
   @JoinColumn(name = "dep_id")
     private Department department;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Contact> contacts = new ArrayList<>();
 
     public Department getDepartment() {
         return department;
@@ -65,14 +68,24 @@ public class Employee {
         this.designation = designation;
     }
 
+    public List<Contact> getContacts() {
+        return contacts;
+    }
+
+    public void setContacts(List<Contact> contacts) {
+        this.contacts = contacts;
+    }
+
     @Override
     public String toString() {
         return "Employee{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
-                ", age='" + age + '\'' +
+                ", age=" + age +
                 ", designation='" + designation + '\'' +
+                ", department=" + department +
+                ", contacts=" + contacts +
                 '}';
     }
 }
